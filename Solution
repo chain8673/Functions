@@ -40,7 +40,30 @@ class Solution:
                 i += 1
         return result
 
+    # 最长公共前缀 leetcode_14
+    def longestCommonPrefix(self, strs) -> str:
+        lstrs = []
+        for str in strs:
+            lstr = len(str)
+            lstrs.append(lstr)
+        minLstrs = min(lstrs)
+        n = 0
+        for i in range(minLstrs):
+            ls0 = strs[0]
+            s = ls0[i:i + 1]
+            for str in strs:
+                m = 0
+                if s != str[i:i + 1]:
+                    break
+                else:
+                    m += 1
+            if m == 0:
+                break
+            n += 1
+        result = strs[0][0:n]
+        return result
+
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.romanToInt("IX"))
+    s.longestCommonPrefix(["flower", "flow", "flight"])
