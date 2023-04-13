@@ -71,13 +71,25 @@ class Solution:
             s_new = s.replace('()', '').replace('[]', '').replace('{}', '')
         return not s_new
 
-    # 作者：h779803
-    # 链接：https: // leetcode.cn / problems / valid - parentheses / solutions / 255879 / python3 - zui - chai - jie - xiao - liao - by - h779803 /
-    # 来源：力扣（LeetCode）
-    # 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    # 合并两个有序链表 leetcode_21
+    def mergeTwoLists(self, l1, l2):
+        if not l1: return l2  # 终止条件，直到两个链表都空
+        if not l2: return l1
+        if l1.val <= l2.val:  # 递归调用
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
+
+    # 删除有序数组中的重复项 leetcode_26
+    def removeDuplicates(self, list):
+        n = len(list)
+        list1 = []
+
+        return len(list1)
 
 
 if __name__ == "__main__":
-    l = ["a", "b", "c"]
-
     s = Solution()
+    s.removeDuplicates([1, 1, 2, 2, 3, 3])
